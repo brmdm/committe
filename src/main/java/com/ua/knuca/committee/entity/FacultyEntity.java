@@ -15,6 +15,7 @@ public class FacultyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "faculty_id")
     private Integer id;
 
     @Column(unique = true)
@@ -25,9 +26,6 @@ public class FacultyEntity {
 
     @Column(name = "budget_places")
     private Integer budgetPlaces;
-
-    @OneToMany
-    private Set<UserEntity> applicants;
 
     @OneToMany
     private Set<StatementEntity> statements;

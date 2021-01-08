@@ -2,8 +2,10 @@ package com.ua.knuca.committee.entity;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Data
@@ -16,6 +18,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Integer id;
 
     private String surname;
@@ -35,19 +38,18 @@ public class UserEntity {
     @ColumnDefault("true")
     private Boolean enable;
 
-    @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private FacultyEntity faculty;
-
-    @ManyToOne
-    @JoinColumn(name = "statement_id")
-    private StatementEntity statement;
-
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @ManyToMany
+    @JoinTable(
+            name = "users_statements",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "statement_id")}
+    )
+    private Set<StatementEntity> statement;
 
     @ManyToMany
     @JoinTable(
@@ -56,5 +58,8 @@ public class UserEntity {
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
     private Set<SubjectEntity> subjects;
+
+    @CreationTimestamp
+    private Timestamp createdAt;
 
 }

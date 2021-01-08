@@ -17,6 +17,7 @@ public class SubjectEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "subject_id")
     private Integer id;
 
     @Column(unique = true)

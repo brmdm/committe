@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Data
@@ -19,6 +21,7 @@ public class StatementEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "statement_id")
     private Integer id;
 
     @ColumnDefault("false")
@@ -28,6 +31,9 @@ public class StatementEntity {
     @JoinColumn(name = "faculty_id")
     private FacultyEntity faculty;
 
-    @OneToMany
+    @ManyToMany
     private Set<UserEntity> applicants;
+
+    @CreationTimestamp
+    private Timestamp createdAt;
 }
