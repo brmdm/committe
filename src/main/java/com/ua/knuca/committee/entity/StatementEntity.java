@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity(name = "statement_entity")
 @Table(name = "statements")
-public class Statement {
+public class StatementEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,8 +26,8 @@ public class Statement {
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    private FacultyEntity faculty;
 
     @OneToMany
-    private Set<User> applicants;
+    private Set<UserEntity> applicants;
 }

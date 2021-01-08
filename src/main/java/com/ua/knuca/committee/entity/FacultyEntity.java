@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity(name = "faculty_entity")
 @Table(name = "faculties")
-public class Faculty {
+public class FacultyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +27,8 @@ public class Faculty {
     private Integer budgetPlaces;
 
     @OneToMany
-    private Set<User> applicants;
+    private Set<UserEntity> applicants;
 
     @OneToMany
-    private Set<Statement> statements;
+    private Set<StatementEntity> statements;
 }

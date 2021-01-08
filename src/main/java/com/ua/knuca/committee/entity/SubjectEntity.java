@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity(name = "subject_entity")
 @Table(name = "subjects")
-public class Subject {
+public class SubjectEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

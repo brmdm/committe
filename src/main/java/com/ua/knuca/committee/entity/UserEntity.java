@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity(name = "user_entity")
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,11 +37,11 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    private FacultyEntity faculty;
 
     @ManyToOne
     @JoinColumn(name = "statement_id")
-    private Statement statement;
+    private StatementEntity statement;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -55,6 +55,6 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
-    private Set<Subject> subjects;
+    private Set<SubjectEntity> subjects;
 
 }
