@@ -28,5 +28,17 @@ public class FacultyEntity {
     private Integer budgetPlaces;
 
     @OneToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<StatementEntity> statements;
+
+    @ManyToMany
+    @JoinTable(
+            name = "faculty_subjects",
+            joinColumns = {@JoinColumn(name = "faculty_id")},
+            inverseJoinColumns = {@JoinColumn(name = "subject_id")}
+    )
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<SubjectEntity> subjects;
 }

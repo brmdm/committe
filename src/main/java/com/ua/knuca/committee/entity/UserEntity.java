@@ -41,6 +41,8 @@ public class UserEntity {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<Role> roles;
 
     @ManyToMany
@@ -49,15 +51,9 @@ public class UserEntity {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "statement_id")}
     )
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<StatementEntity> statement;
-
-    @ManyToMany
-    @JoinTable(
-            name = "users_subjects",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "subject_id")}
-    )
-    private Set<SubjectEntity> subjects;
 
     @CreationTimestamp
     private Timestamp createdAt;

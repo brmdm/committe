@@ -1,9 +1,6 @@
 package com.ua.knuca.committee.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -32,6 +29,8 @@ public class StatementEntity {
     private FacultyEntity faculty;
 
     @ManyToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<UserEntity> applicants;
 
     @CreationTimestamp
