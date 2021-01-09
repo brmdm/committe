@@ -55,6 +55,16 @@ public class UserEntity {
     @ToString.Exclude
     private Set<StatementEntity> statement;
 
+    @ManyToMany
+    @JoinTable(
+            name = "faculty_user_subjects",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "subject_id")}
+    )
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<SubjectEntity> subjects;
+
     @CreationTimestamp
     private Timestamp createdAt;
 

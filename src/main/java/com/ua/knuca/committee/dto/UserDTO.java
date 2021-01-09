@@ -27,5 +27,6 @@ public class UserDTO {
     private Set<Role> roles;
     private Set<StatementDTO> statement;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+    private Set<SubjectDTO> subjects;
     private Timestamp createdAt;
 }

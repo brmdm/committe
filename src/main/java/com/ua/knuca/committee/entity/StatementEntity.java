@@ -29,6 +29,11 @@ public class StatementEntity {
     private FacultyEntity faculty;
 
     @ManyToMany
+    @JoinTable(
+            name = "faculty_user_subjects",
+            joinColumns = {@JoinColumn(name = "subject_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<UserEntity> applicants;
