@@ -30,8 +30,8 @@ public class StatementEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "faculty_user_subjects",
-            joinColumns = {@JoinColumn(name = "subject_id")},
+            name = "users_statements",
+            joinColumns = {@JoinColumn(name = "statement_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     @EqualsAndHashCode.Exclude

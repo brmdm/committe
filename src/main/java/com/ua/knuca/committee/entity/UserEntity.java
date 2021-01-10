@@ -3,9 +3,12 @@ package com.ua.knuca.committee.entity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Set;
 
 @Data
@@ -14,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity(name = "user_entity")
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +28,7 @@ public class UserEntity {
 
     private String name;
 
+    @Column(name = "fathersname")
     private String fathersName;
 
     private String email;
@@ -38,12 +42,15 @@ public class UserEntity {
     @ColumnDefault("true")
     private Boolean enable;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "roles_users",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<Role> roles;
+    private Set<RoleEntity> roles;
 
     @ManyToMany
     @JoinTable(
@@ -57,7 +64,7 @@ public class UserEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "faculty_user_subjects",
+            name = "faculty_user_subject",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
@@ -68,4 +75,33 @@ public class UserEntity {
     @CreationTimestamp
     private Timestamp createdAt;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return enable;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return enable;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return enable;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enable;
+    }
 }

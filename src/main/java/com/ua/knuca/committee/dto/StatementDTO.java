@@ -1,8 +1,7 @@
 package com.ua.knuca.committee.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
@@ -10,6 +9,8 @@ import java.util.Set;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class StatementDTO {
 
     private Integer id;

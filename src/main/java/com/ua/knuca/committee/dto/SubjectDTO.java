@@ -1,13 +1,14 @@
 package com.ua.knuca.committee.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SubjectDTO {
 
     private Integer id;
