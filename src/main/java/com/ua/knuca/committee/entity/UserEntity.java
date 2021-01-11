@@ -104,4 +104,8 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return enable;
     }
+
+    public boolean isAdmin() { return roles.stream().iterator().next().getId() == 1; }
+
+    public boolean isUser() { return roles.stream().iterator().next().getId() == 2; }
 }
