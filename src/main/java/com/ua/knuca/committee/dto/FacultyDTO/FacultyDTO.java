@@ -1,5 +1,6 @@
-package com.ua.knuca.committee.dto;
+package com.ua.knuca.committee.dto.FacultyDTO;
 
+import com.ua.knuca.committee.dto.SubjectDTO.SubjectDTO;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;

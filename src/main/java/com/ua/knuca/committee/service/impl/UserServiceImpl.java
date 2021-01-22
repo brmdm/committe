@@ -1,9 +1,6 @@
 package com.ua.knuca.committee.service.impl;
 
-import com.ua.knuca.committee.dto.SubjectDTO;
-import com.ua.knuca.committee.dto.UserDTO;
-import com.ua.knuca.committee.entity.SubjectEntity;
-import com.ua.knuca.committee.entity.UserEntity;
+import com.ua.knuca.committee.dto.UserDTO.UserDTO;
 import com.ua.knuca.committee.mapper.UserMapper;
 import com.ua.knuca.committee.repository.UserRepository;
 import com.ua.knuca.committee.service.UserService;
@@ -27,9 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<UserDTO> findAll(Pageable pageable) {
-//        Page<UserEntity> entities = userRepository.findAll(pageable);
-//        Page<UserDTO> dtos = entities.map(userMapper::toUserDTO);
-//        return dtos;
         return userRepository.findAll(pageable).map(userMapper::toUserDTO);
     }
 }

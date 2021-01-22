@@ -1,7 +1,6 @@
 package com.ua.knuca.committee.service.impl;
 
-import com.ua.knuca.committee.dto.FacultyDTO;
-import com.ua.knuca.committee.entity.FacultyEntity;
+import com.ua.knuca.committee.dto.FacultyDTO.FacultyDTO;
 import com.ua.knuca.committee.mapper.FacultyMapper;
 import com.ua.knuca.committee.repository.FacultyRepository;
 import com.ua.knuca.committee.service.FacultyService;

@@ -21,4 +21,6 @@ public class SubjectEntity {
     private String title;
 
     private Integer mark;
+
+    private Integer year;
 }

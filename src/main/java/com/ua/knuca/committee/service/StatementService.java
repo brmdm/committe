@@ -1,6 +1,6 @@
 package com.ua.knuca.committee.service;
 
-import com.ua.knuca.committee.dto.StatementDTO;
+import com.ua.knuca.committee.dto.StatementDTO.StatementDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

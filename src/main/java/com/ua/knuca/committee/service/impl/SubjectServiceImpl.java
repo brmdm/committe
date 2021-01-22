@@ -1,9 +1,6 @@
 package com.ua.knuca.committee.service.impl;
 
-import com.ua.knuca.committee.dto.StatementDTO;
-import com.ua.knuca.committee.dto.SubjectDTO;
-import com.ua.knuca.committee.entity.StatementEntity;
-import com.ua.knuca.committee.entity.SubjectEntity;
+import com.ua.knuca.committee.dto.SubjectDTO.SubjectDTO;
 import com.ua.knuca.committee.mapper.SubjectMapper;
 import com.ua.knuca.committee.repository.SubjectRepository;
 import com.ua.knuca.committee.service.SubjectService;

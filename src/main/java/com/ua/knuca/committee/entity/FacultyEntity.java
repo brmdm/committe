@@ -28,18 +28,13 @@ public class FacultyEntity {
     private Integer budgetPlaces;
 
     @OneToMany
-    @JoinTable(
-            name = "faculties_statements",
-            joinColumns = {@JoinColumn(name = "faculty_id")},
-            inverseJoinColumns = {@JoinColumn(name = "statement_id")}
-    )
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<StatementEntity> statements;
 
     @ManyToMany
     @JoinTable(
-            name = "faculty_user_subject",
+            name = "faculty_subject",
             joinColumns = {@JoinColumn(name = "faculty_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )

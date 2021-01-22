@@ -1,6 +1,8 @@
-package com.ua.knuca.committee.dto;
+package com.ua.knuca.committee.dto.StatementDTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ua.knuca.committee.dto.FacultyDTO.FacultyDTO;
+import com.ua.knuca.committee.dto.UserDTO.UserDTO;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;

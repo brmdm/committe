@@ -1,6 +1,6 @@
 package com.ua.knuca.committee.mapper;
 
-import com.ua.knuca.committee.dto.SubjectDTO;
+import com.ua.knuca.committee.dto.SubjectDTO.SubjectDTO;
 import com.ua.knuca.committee.entity.SubjectEntity;
 import org.mapstruct.Mapper;
 

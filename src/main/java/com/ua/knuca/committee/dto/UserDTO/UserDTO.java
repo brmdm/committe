@@ -1,4 +1,4 @@
-package com.ua.knuca.committee.dto;
+package com.ua.knuca.committee.dto.UserDTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

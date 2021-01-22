@@ -1,4 +1,4 @@
-package com.ua.knuca.committee.dto;
+package com.ua.knuca.committee.dto.SubjectDTO;
 
 import lombok.*;
 

@@ -42,14 +42,13 @@ public class UserEntity implements UserDetails {
     @ColumnDefault("true")
     private Boolean enable;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = RoleEntity.class, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "roles_users",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+            name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id")}
     )
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<RoleEntity> roles;
 
     @ManyToMany
@@ -64,7 +63,7 @@ public class UserEntity implements UserDetails {
 
     @ManyToMany
     @JoinTable(
-            name = "faculty_user_subject",
+            name = "user_subject",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
@@ -105,7 +104,11 @@ public class UserEntity implements UserDetails {
         return enable;
     }
 
-    public boolean isAdmin() { return roles.stream().iterator().next().getId() == 1; }
+    public boolean isAdmin() {
+        return roles.contains(RoleEntity.ADMIN);
+    }
 
-    public boolean isUser() { return roles.stream().iterator().next().getId() == 2; }
+    public boolean isUser() {
+        return roles.contains(RoleEntity.USER);
+    }
 }

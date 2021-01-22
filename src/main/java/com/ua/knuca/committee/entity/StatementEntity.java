@@ -21,12 +21,14 @@ public class StatementEntity {
     @Column(name = "statement_id")
     private Integer id;
 
+    private Integer year;
+
     @ColumnDefault("false")
     private Boolean finalized;
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
-    private FacultyEntity faculty;
+    private FacultyEntity faculty_id;
 
     @ManyToMany
     @JoinTable(

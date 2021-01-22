@@ -1,6 +1,6 @@
 package com.ua.knuca.committee.service;
 
-import com.ua.knuca.committee.dto.UserDTO;
+import com.ua.knuca.committee.dto.UserDTO.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
