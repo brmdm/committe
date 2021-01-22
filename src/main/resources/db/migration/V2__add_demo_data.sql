@@ -25,7 +25,7 @@ VALUES ('Фізико-математичний факультет', 20, 5),
 
 
 INSERT INTO PUBLIC.USERS(SURNAME, NAME, FATHERSNAME, EMAIL, PASSWORD, CITY, REGION, ENABLE)
-VALUES ('', '', '', 'admin@mail.com', 'admin', '', '', true);
+VALUES ('', '', '', 'admin@mail.com', '$2y$10$HtPxIc3iDAwuZ3i9ZVA0N.0WMSiOfqWHIxwB.zDXGN.t2H6DZqVXm', '', '', true);
 
 INSERT INTO PUBLIC.STATEMENTS(YEAR, FINALIZED, FACULTY_ID)
 VALUES (2019, FALSE, 1);
