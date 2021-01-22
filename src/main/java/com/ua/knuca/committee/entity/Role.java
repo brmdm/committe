@@ -2,7 +2,7 @@ package com.ua.knuca.committee.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum RoleEntity implements GrantedAuthority {
+public enum Role implements GrantedAuthority {
     USER, ADMIN;
 
     @Override

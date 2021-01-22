@@ -42,14 +42,14 @@ public class UserEntity implements UserDetails {
     @ColumnDefault("true")
     private Boolean enable;
 
-    @ElementCollection(targetClass = RoleEntity.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")}
     )
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<RoleEntity> roles;
+    private Set<Role> role;
 
     @ManyToMany
     @JoinTable(
@@ -76,7 +76,7 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
+        return getRole();
     }
 
     @Override
@@ -105,10 +105,10 @@ public class UserEntity implements UserDetails {
     }
 
     public boolean isAdmin() {
-        return roles.contains(RoleEntity.ADMIN);
+        return role.contains(Role.ADMIN);
     }
 
     public boolean isUser() {
-        return roles.contains(RoleEntity.USER);
+        return role.contains(Role.USER);
     }
 }
