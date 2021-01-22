@@ -22,6 +22,7 @@ public class UserDTO {
     private String password;
     private String city;
     private String region;
+    private String institution;
     private Boolean enable;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private Timestamp createdAt;

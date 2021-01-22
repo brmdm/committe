@@ -1,11 +1,13 @@
 package com.ua.knuca.committee.dto.UserDTO;
 
+import com.ua.knuca.committee.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Data
 @Builder
@@ -26,4 +28,6 @@ public class RegisterUserDTO {
     private String city;
     @NotBlank
     private String region;
+
+    private Set<Role> role;
 }

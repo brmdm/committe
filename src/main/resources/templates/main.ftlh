@@ -9,13 +9,12 @@
             <#list page.content  as faculty>
                 <div class="card my-3" style="width: 18rem;">
                     <h5 class="card-title">  ${faculty.title}.</h5>
-                    <b>Places: ${faculty.allPlaces}. </b>
-                    <b>Budget PLaces: ${faculty.budgetPlaces}. </b>
+                    <b><@spring.message "main.totalplaces"/>: ${faculty.allPlaces}. </b>
                     <div class="m-2">
-                        <i><@spring.message "main.freeseats"/> : </i>
+                        <i><@spring.message "main.budgetplaces"/>: ${faculty.budgetPlaces}.</i>
                     </div>
                     <div class="card-footer text-muted">
-                        <@spring.message "main.price"/> = ${faculty.id}. <a href="/ticket/${faculty.id}"><@spring.message "main.buyticket"/></a>
+                        <@spring.message "main.interest"/> <a href="/faculty/${faculty.id}"><@spring.message "main.apply"/></a>
                     </div>
 
                 </div>

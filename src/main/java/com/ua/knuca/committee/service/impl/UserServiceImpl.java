@@ -2,6 +2,7 @@ package com.ua.knuca.committee.service.impl;
 
 import com.ua.knuca.committee.dto.UserDTO.RegisterUserDTO;
 import com.ua.knuca.committee.dto.UserDTO.UserDTO;
+import com.ua.knuca.committee.entity.Role;
 import com.ua.knuca.committee.exception.EmailAlreadyExistException;
 import com.ua.knuca.committee.mapper.UserMapper;
 import com.ua.knuca.committee.repository.UserRepository;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -36,14 +38,13 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserDTO(userRepository.findByEmail(email).orElseThrow());
     }
 
-
-
     @Override
     @Transactional
     public UserDTO registerNewUser(RegisterUserDTO newUser) throws EmailAlreadyExistException {
         if (isUserExistByEmail(newUser.getEmail())) {
             throw new EmailAlreadyExistException(newUser.getEmail());
         }
+        newUser.setRole(Set.of(Role.USER));
         return userMapper.toUserDTO(userRepository.save(userMapper.toUserEntity(newUser)));
     }
 

@@ -39,6 +39,8 @@ public class UserEntity implements UserDetails {
 
     private String region;
 
+    private String institution;
+
     @ColumnDefault("true")
     private Boolean enable;
 
