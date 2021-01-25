@@ -18,10 +18,6 @@ public class StatementServiceImpl implements StatementService {
 
     @Override
     public Page<StatementDTO> findAll(Pageable pageable) {
-//        Page<StatementEntity> entities = statementRepository.findAll(pageable);
-//        Page<StatementDTO> dtos = entities.map(statementMapper::toStatementDTO);
-//        return dtos;
-
         return statementRepository.findAll(pageable).map(statementMapper::toStatementDTO);
     }
 }

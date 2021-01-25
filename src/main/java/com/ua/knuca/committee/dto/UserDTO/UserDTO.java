@@ -1,10 +1,12 @@
 package com.ua.knuca.committee.dto.UserDTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ua.knuca.committee.entity.Role;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Data
 @Builder
@@ -26,4 +28,5 @@ public class UserDTO {
     private Boolean enable;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private Timestamp createdAt;
+    private Set<Role> role;
 }

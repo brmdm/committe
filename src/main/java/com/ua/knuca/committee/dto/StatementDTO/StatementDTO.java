@@ -18,6 +18,8 @@ public class StatementDTO {
     private Integer id;
     private Boolean finalized;
 
+    private Integer year;
+
     @NotNull
     private FacultyDTO faculty;
 

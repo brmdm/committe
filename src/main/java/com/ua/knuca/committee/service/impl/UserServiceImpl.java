@@ -1,9 +1,12 @@
 package com.ua.knuca.committee.service.impl;
 
+import com.ua.knuca.committee.dto.StatementDTO.StatementDTO;
 import com.ua.knuca.committee.dto.UserDTO.RegisterUserDTO;
 import com.ua.knuca.committee.dto.UserDTO.UserDTO;
 import com.ua.knuca.committee.entity.Role;
+import com.ua.knuca.committee.entity.UserEntity;
 import com.ua.knuca.committee.exception.EmailAlreadyExistException;
+import com.ua.knuca.committee.mapper.StatementMapper;
 import com.ua.knuca.committee.mapper.UserMapper;
 import com.ua.knuca.committee.repository.UserRepository;
 import com.ua.knuca.committee.service.UserService;
@@ -18,13 +21,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final StatementMapper statementMapper;
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -35,6 +41,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserDTO> findAll(Pageable pageable) {
         return userRepository.findAll(pageable).map(userMapper::toUserDTO);
+    }
+
+    @Override
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream().map(userMapper::toUserDTO).collect(Collectors.toList());
     }
 
     @Override
@@ -62,5 +73,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setPasswordEncoder(@Lazy PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public List<StatementDTO> findAllStatementsByUserId(Integer userId) {
+        UserEntity userFromDB = userRepository.findById(userId).orElseThrow();
+        return userFromDB.getStatement().stream()
+                .map(statementMapper::toStatementDTO)
+                .collect(Collectors.toList());
     }
 }
