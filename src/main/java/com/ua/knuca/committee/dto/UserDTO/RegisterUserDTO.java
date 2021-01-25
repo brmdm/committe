@@ -28,6 +28,10 @@ public class RegisterUserDTO {
     private String city;
     @NotBlank
     private String region;
+    @NotBlank
+    private String institution;
+
+    private Boolean enable;
 
     private Set<Role> role;
 }

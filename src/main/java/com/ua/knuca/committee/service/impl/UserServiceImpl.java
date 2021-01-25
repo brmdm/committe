@@ -8,10 +8,13 @@ import com.ua.knuca.committee.mapper.UserMapper;
 import com.ua.knuca.committee.repository.UserRepository;
 import com.ua.knuca.committee.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,6 +25,7 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -45,11 +49,18 @@ public class UserServiceImpl implements UserService {
             throw new EmailAlreadyExistException(newUser.getEmail());
         }
         newUser.setRole(Set.of(Role.USER));
+        newUser.setEnable(true);
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
         return userMapper.toUserDTO(userRepository.save(userMapper.toUserEntity(newUser)));
     }
 
     @Override
     public boolean isUserExistByEmail(String email) {
         return userRepository.findByEmail(email).isPresent();
+    }
+
+    @Autowired
+    public void setPasswordEncoder(@Lazy PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
     }
 }
