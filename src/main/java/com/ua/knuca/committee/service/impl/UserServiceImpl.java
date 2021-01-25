@@ -82,4 +82,12 @@ public class UserServiceImpl implements UserService {
                 .map(statementMapper::toStatementDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    @Transactional
+    public void setEnableForUserById(Integer userId, boolean enable) {
+        UserEntity userEntityFromDB = userRepository.findById(userId).orElseThrow();
+        userEntityFromDB.setEnable(enable);
+        userRepository.save(userEntityFromDB);
+    }
 }

@@ -22,4 +22,6 @@ public interface UserService extends UserDetailsService {
     boolean isUserExistByEmail(String email);
 
     List<StatementDTO> findAllStatementsByUserId(Integer userId);
+
+    void setEnableForUserById(Integer userId, boolean enable);
 }

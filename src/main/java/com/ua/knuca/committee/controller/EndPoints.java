@@ -7,4 +7,6 @@ public class EndPoints {
     public static final String MAIN_PAGE = "/";
     public static final String OFFICE = "/main";
     public static final String USER_LIST = "/user";
+    public static final String USER_DISABLE = "/disable";
+    public static final String USER_ENABLE = "/enable";
 }
