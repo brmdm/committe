@@ -19,12 +19,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/film"><@spring.message "navbar.filmlist"/></a>
-                </li>
-            </#if>
-            <#if isAdmin>
-                <li class="nav-item">
-                    <a class="nav-link" href="/event"><@spring.message "navbar.eventlist"/></a>
+                    <a class="nav-link" href="/faculty"><@spring.message "navbar.newfaculty"/></a>
                 </li>
             </#if>
             <li class="nav-item dropdown">
@@ -41,9 +36,6 @@
             </li>
         </ul>
         <div class="navbar-text mr-3">${name}</div>
-        <#if isAdmin>
-        <@l.logout/>
-        </#if>
         <#if isUser>
             <@l.logout/>
         </#if>

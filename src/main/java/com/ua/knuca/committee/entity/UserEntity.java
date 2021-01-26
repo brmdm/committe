@@ -46,10 +46,10 @@ public class UserEntity implements UserDetails {
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_role",
+            name = "users_role",
             joinColumns = {@JoinColumn(name = "user_id")}
     )
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "users_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> role;
 
@@ -65,7 +65,7 @@ public class UserEntity implements UserDetails {
 
     @ManyToMany
     @JoinTable(
-            name = "user_subject",
+            name = "users_subjects",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )

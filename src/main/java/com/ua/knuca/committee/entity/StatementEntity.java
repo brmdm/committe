@@ -28,6 +28,8 @@ public class StatementEntity {
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private FacultyEntity faculty_id;
 
     @ManyToMany

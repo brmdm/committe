@@ -34,7 +34,7 @@ public class FacultyEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "faculty_subject",
+            name = "faculties_subjects",
             joinColumns = {@JoinColumn(name = "faculty_id")},
             inverseJoinColumns = {@JoinColumn(name = "subject_id")}
     )
