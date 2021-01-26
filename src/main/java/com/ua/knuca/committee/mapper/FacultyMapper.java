@@ -8,4 +8,6 @@ import org.mapstruct.Mapper;
 public interface FacultyMapper {
 
     FacultyDTO toFacultyDTO(FacultyEntity facultyEntity);
+
+    FacultyEntity toFacultyEntity(FacultyDTO facultyDTO);
 }

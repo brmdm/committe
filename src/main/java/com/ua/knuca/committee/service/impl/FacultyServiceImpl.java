@@ -1,6 +1,7 @@
 package com.ua.knuca.committee.service.impl;
 
 import com.ua.knuca.committee.dto.FacultyDTO.FacultyDTO;
+import com.ua.knuca.committee.entity.FacultyEntity;
 import com.ua.knuca.committee.mapper.FacultyMapper;
 import com.ua.knuca.committee.repository.FacultyRepository;
 import com.ua.knuca.committee.service.FacultyService;
@@ -17,9 +18,23 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Page<FacultyDTO> findAll(Pageable pageable) {
-//        Page<FacultyEntity> entities = facultyRepository.findAll(pageable);
-//        Page<FacultyDTO> dtos = entities.map(facultyMapper::toFacultyDTO);
-//        return dtos;
         return facultyRepository.findAll(pageable).map(facultyMapper::toFacultyDTO);
+    }
+
+    @Override
+    public FacultyDTO findFacultyById(Integer id) {
+        return facultyMapper.toFacultyDTO(
+                facultyRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public void deleteFacultyById(Integer id) {
+        facultyRepository.deleteById(id);
+    }
+
+    @Override
+    public FacultyDTO saveNewFaculty(FacultyDTO facultyDTO) {
+        FacultyEntity facultyEntity = facultyMapper.toFacultyEntity(facultyDTO);
+        return facultyMapper.toFacultyDTO(facultyRepository.save(facultyEntity));
     }
 }

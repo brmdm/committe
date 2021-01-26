@@ -4,7 +4,6 @@ import com.ua.knuca.committee.dto.SubjectDTO.SubjectDTO;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
@@ -23,7 +22,5 @@ public class FacultyDTO {
 
     private Integer budgetPlaces;
 
-    @NotNull
-    @Size(min = 1, max = 3)
     private Set<SubjectDTO> subjects;
 }

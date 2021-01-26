@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class SubjectEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subject_id")
     private Integer id;
 

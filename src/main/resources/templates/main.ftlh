@@ -4,6 +4,12 @@
 <#include "parts/security.ftlh">
 <@c.page>
     <h5><@spring.message "main.hello"/>, ${name}</h5>
+    <a href="${url}?sort=title&title.dir=desc">ByTitleDesc</a>
+    <a href="${url}?sort=title&title.dir=asc">ByTitleAsc</a>
+    <a href="${url}?sort=budgetPlaces&budgetPlaces.dir=desc">ByBudgetDesc</a>
+    <a href="${url}?sort=budgetPlaces&budgetPlaces.dir=asc">ByBudgetAsc</a>
+    <a href="${url}?sort=allPlaces&allPlaces.dir=asc">ByAllAsc</a>
+    <a href="${url}?sort=allPlaces&allPlaces.dir=desc">ByAllDesc</a>
     <@p.pager url page />
         <div class="card-columns">
             <#list page.content  as faculty>

@@ -9,4 +9,7 @@ public class EndPoints {
     public static final String USER_LIST = "/user";
     public static final String USER_DISABLE = "/disable";
     public static final String USER_ENABLE = "/enable";
+    public static final String FACULTY = "/faculty";
+    public static final String FIND_BY_ID = "/{id}";
+    public static final String DELETE = "/delete";
 }

@@ -6,4 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface FacultyService {
     Page<FacultyDTO> findAll(Pageable pageable);
+
+    FacultyDTO findFacultyById(Integer id);
+
+    void deleteFacultyById(Integer Id);
+
+    FacultyDTO saveNewFaculty(FacultyDTO facultyDTO);
 }
